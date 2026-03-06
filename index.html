@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senin İçin ❤️</title>
     <style>
+        /* Genel Arkaplan ve Sayfa Düzeni */
         body {
             background: linear-gradient(#ff9a9e, #fad0c4);
             height: 100vh;
@@ -20,56 +21,71 @@
 
         h1 {
             color: white;
-            font-size: 28px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 26px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
             padding: 0 20px;
+            margin-bottom: 20px;
         }
 
+        /* Şık Buton Tasarımı */
         button {
-            padding: 15px 30px;
+            padding: 15px 35px;
             font-size: 18px;
             border: none;
             border-radius: 50px;
             background: #ff3366;
             color: white;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.2s;
-            z-index: 10;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 100;
         }
 
-        button:active {
-            transform: scale(0.95);
+        button:hover {
+            transform: scale(1.05);
+            background: #ff4d79;
         }
 
-        <img id="cicekResmi" src="[attachment_0](attachment)" alt="Pembe Lilyum Buketi">
+        /* Buket Resmi Ayarları */
+        img {
+            width: 85%;
+            max-width: 380px;
+            border-radius: 25px;
+            margin-top: 20px;
+            display: none; /* İlk başta gizli */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            animation: softAppear 1.2s ease-out;
+        }
 
-
+        /* Alt Mesaj Ayarları */
         p {
             color: white;
-            font-size: 20px;
-            margin-top: 20px;
+            font-size: 19px;
+            margin-top: 25px;
             display: none;
-            font-weight: bold;
-            animation: fadeIn 1.5s;
+            font-weight: 600;
+            padding: 0 25px;
+            line-height: 1.4;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+            animation: softAppear 2s ease-out;
         }
 
+        /* Kalp Yağmuru Animasyonu */
         .heart {
             position: fixed;
             top: 100vh;
-            color: red;
             pointer-events: none;
-            z-index: 5;
-            animation: float 4s linear forwards;
+            z-index: 50;
+            animation: floatUp 4s linear forwards;
         }
 
-        @keyframes float {
+        @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.8); }
+        @keyframes softAppear {
+            from { opacity: 0; transform: scale(0.9); }
             to { opacity: 1; transform: scale(1); }
         }
     </style>
@@ -77,18 +93,21 @@
 <body>
 
     <h1>Sana bir çiçek gönderdim 🌹</h1>
-    <button id="btn" onclick="cicekAc()">Çiçeği Aç</button>
     
-    <img id="gul" src="https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=500" alt="Gül">
+    <button id="mainBtn" onclick="surpriziAc()">Çiçeği Aç</button>
+    
+    <img id="cicekResmi" src="http://googleusercontent.com/image_collection/image_retrieval/11899657240274976477_0" alt="Pembe Lilyum Buketi">
     
     <p id="mesaj">Baban evde diye çiçeksiz kalacak değilsin ya ❤️</p>
 
     <script>
-        function cicekAc() {
-            document.getElementById("gul").style.display = "block";
+        function surpriziAc() {
+            // Butonu gizleyip çiçek ve mesajı çıkarıyoruz
+            document.getElementById("mainBtn").style.display = "none";
+            document.getElementById("cicekResmi").style.display = "block";
             document.getElementById("mesaj").style.display = "block";
-            document.getElementById("btn").style.display = "none";
 
+            // Kalp efektini başlat
             setInterval(createHeart, 300);
         }
 
@@ -97,14 +116,17 @@
             heart.className = "heart";
             heart.innerHTML = "❤️";
             heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = (Math.random() * 20 + 20) + "px";
-            heart.style.opacity = Math.random();
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            heart.style.opacity = Math.random() * 0.5 + 0.5;
             document.body.appendChild(heart);
 
+            // Sayfayı kasmaması için kalpleri siliyoruz
             setTimeout(() => {
                 heart.remove();
             }, 4000);
         }
     </script>
+</body>
+</html>
 </body>
 </html>
