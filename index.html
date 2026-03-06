@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Senin İçin ❤️</title>
+    <title>HAYATIMIN KADININA ❤️</title>
     <style>
         body {
             background: linear-gradient(#ff9a9e, #fad0c4);
@@ -17,7 +17,7 @@
             text-align: center;
             overflow: hidden;
         }
-        h1 { color: white; font-size: 26px; text-shadow: 2px 2px 5px rgba(0,0,0,0.1); padding: 0 20px; }
+        h1 { color: white; font-size: 24px; padding: 0 20px; text-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
         button {
             padding: 15px 35px;
             font-size: 18px;
@@ -31,13 +31,14 @@
         }
         img {
             width: 85%;
-            max-width: 380px;
-            border-radius: 25px;
+            max-width: 350px;
+            border-radius: 20px;
             margin-top: 20px;
             display: none;
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
-        p { color: white; font-size: 19px; margin-top: 25px; display: none; font-weight: 600; padding: 0 25px; }
+        .mesajlar { color: white; display: none; z-index: 10; }
+        p { font-size: 18px; font-weight: 600; margin: 10px 20px; }
         .heart {
             position: fixed;
             top: 100vh;
@@ -52,55 +53,33 @@
 </head>
 <body>
 
-    <h1>Kadınlar günün kutlu olsun hayatımın kadını, çiçek için tıklasana!🌹</h1>
+    <h1>Kadınlar günün kutlu olsun hayatımın kadını, çiçek için tıklasana ;) 🌹</h1>
     
-    <button id="mainBtn" onclick="surpriziAc()">Çiçeği Aç</button>
+    <button id="btn" onclick="ac()">Çiçeği Aç ❤️</button>
     
-    <img id="cicekResmi" src="https://i.imgur.com/8N69FmP.jpg" alt="Pembe Lilyum Buketi">
+    <img id="lilyum" src="https://images.unsplash.com/photo-1596193712033-03e29864f16a?auto=format&fit=crop&w=600" alt="Lilyum Buketi">
     
-    <p id="mesaj">Baban evde diye çiçeksiz kalacak değilsin ya ❤️</p>
+    <div id="altMesaj" class="mesajlar">
+        <p>Baban evde diye çiçeksiz kalacak değilsin ya ❤️</p>
+    </div>
 
     <script>
-        function surpriziAc() {
-            document.getElementById("mainBtn").style.display = "none";
-            document.getElementById("cicekResmi").style.display = "block";
-            document.getElementById("mesaj").style.display = "block";
+        function ac() {
+            document.getElementById("btn").style.display = "none";
+            document.getElementById("lilyum").style.display = "block";
+            document.getElementById("altMesaj").style.display = "block";
             setInterval(createHeart, 300);
         }
 
         function createHeart() {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-            document.body.appendChild(heart);
-            setTimeout(() => { heart.remove(); }, 4000);
+            const h = document.createElement("div");
+            h.className = "heart";
+            h.innerHTML = "❤️";
+            h.style.left = Math.random() * 100 + "vw";
+            h.style.fontSize = (Math.random() * 20 + 15) + "px";
+            document.body.appendChild(h);
+            setTimeout(() => { h.remove(); }, 4000);
         }
     </script>
-</body>
-</html>
-
-            // Kalp efektini başlat
-            setInterval(createHeart, 300);
-        }
-
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            heart.innerHTML = "❤️";
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
-            heart.style.opacity = Math.random() * 0.5 + 0.5;
-            document.body.appendChild(heart);
-
-            // Sayfayı kasmaması için kalpleri siliyoruz
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
-        }
-    </script>
-</body>
-</html>
 </body>
 </html>
