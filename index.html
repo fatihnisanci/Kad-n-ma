@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Senin İçin ❤️</title>
     <style>
-        /* Genel Arkaplan ve Sayfa Düzeni */
         body {
             background: linear-gradient(#ff9a9e, #fad0c4);
             height: 100vh;
@@ -14,20 +13,11 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             text-align: center;
             overflow: hidden;
         }
-
-        h1 {
-            color: white;
-            font-size: 26px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-            padding: 0 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Şık Buton Tasarımı */
+        h1 { color: white; font-size: 26px; text-shadow: 2px 2px 5px rgba(0,0,0,0.1); padding: 0 20px; }
         button {
             padding: 15px 35px;
             font-size: 18px;
@@ -37,75 +27,58 @@
             color: white;
             cursor: pointer;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
             z-index: 100;
         }
-
-        button:hover {
-            transform: scale(1.05);
-            background: #ff4d79;
-        }
-
-        /* Buket Resmi Ayarları */
         img {
             width: 85%;
             max-width: 380px;
             border-radius: 25px;
             margin-top: 20px;
-            display: none; /* İlk başta gizli */
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            animation: softAppear 1.2s ease-out;
-        }
-
-        /* Alt Mesaj Ayarları */
-        p {
-            color: white;
-            font-size: 19px;
-            margin-top: 25px;
             display: none;
-            font-weight: 600;
-            padding: 0 25px;
-            line-height: 1.4;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-            animation: softAppear 2s ease-out;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
-
-        /* Kalp Yağmuru Animasyonu */
+        p { color: white; font-size: 19px; margin-top: 25px; display: none; font-weight: 600; padding: 0 25px; }
         .heart {
             position: fixed;
             top: 100vh;
             pointer-events: none;
-            z-index: 50;
             animation: floatUp 4s linear forwards;
         }
-
         @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-115vh) rotate(360deg); opacity: 0; }
-        }
-
-        @keyframes softAppear {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
 <body>
 
-    <h1>Sana bir çiçek gönderdim 🌹</h1>
-    
+    <h1>Kadınlar günün kutlu olsun hayatımın kadını, çiçek için tıklasana;)🌹</h1>
     <button id="mainBtn" onclick="surpriziAc()">Çiçeği Aç</button>
     
-    <img id="cicekResmi" src="http://googleusercontent.com/image_collection/image_retrieval/11899657240274976477_0" alt="Pembe Lilyum Buketi">
+    <img id="cicekResmi" src="https://i.imgur.com/8N69FmP.jpg" alt="Pembe Lilyum Buketi">
     
     <p id="mesaj">Baban evde diye çiçeksiz kalacak değilsin ya ❤️</p>
 
     <script>
         function surpriziAc() {
-            // Butonu gizleyip çiçek ve mesajı çıkarıyoruz
             document.getElementById("mainBtn").style.display = "none";
             document.getElementById("cicekResmi").style.display = "block";
             document.getElementById("mesaj").style.display = "block";
+            setInterval(createHeart, 300);
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+    </script>
+</body>
+</html>
 
             // Kalp efektini başlat
             setInterval(createHeart, 300);
