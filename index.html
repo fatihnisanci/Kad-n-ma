@@ -1,93 +1,117 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Senin İçin ❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senin İçin ❤️</title>
+    <style>
+        body {
+            background: linear-gradient(#ff9a9e, #fad0c4);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
 
-<style>
-body{
-background: linear-gradient(#ff9a9e,#fad0c4);
-height:100vh;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-font-family:Arial;
-text-align:center;
-overflow:hidden;
-}
+        h1 {
+            color: white;
+            font-size: 28px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            padding: 0 20px;
+        }
 
-h1{
-color:white;
-font-size:35px;
-}
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 50px;
+            background: #ff3366;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+            z-index: 10;
+        }
 
-button{
-padding:15px 30px;
-font-size:20px;
-border:none;
-border-radius:10px;
-background:#ff3366;
-color:white;
-cursor:pointer;
-margin-top:20px;
-}
+        button:active {
+            transform: scale(0.95);
+        }
 
-img{
-width:250px;
-margin-top:30px;
-display:none;
-}
+        img {
+            width: 280px;
+            height: auto;
+            border-radius: 20px;
+            margin-top: 20px;
+            display: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 1s;
+        }
 
-p{
-color:white;
-font-size:22px;
-margin-top:20px;
-display:none;
-}
+        p {
+            color: white;
+            font-size: 20px;
+            margin-top: 20px;
+            display: none;
+            font-weight: bold;
+            animation: fadeIn 1.5s;
+        }
 
-.heart{
-position:absolute;
-color:red;
-font-size:20px;
-animation:float 4s linear infinite;
-}
+        .heart {
+            position: fixed;
+            top: 100vh;
+            color: red;
+            pointer-events: none;
+            z-index: 5;
+            animation: float 4s linear forwards;
+        }
 
-@keyframes float{
-0%{transform:translateY(0);opacity:1;}
-100%{transform:translateY(-800px);opacity:0;}
-}
-</style>
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>Sana bir çiçek gönderdim 🌹</h1>
+    <h1>Sana bir çiçek gönderdim 🌹</h1>
+    <button id="btn" onclick="cicekAc()">Çiçeği Aç</button>
+    
+    <img id="gul" src="https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=500" alt="Gül">
+    
+    <p id="mesaj">Baban evde diye çiçeksiz kalacak değilsin ya ❤️</p>
 
-<button onclick="cicek()">Çiçeği Aç</button>
+    <script>
+        function cicekAc() {
+            document.getElementById("gul").style.display = "block";
+            document.getElementById("mesaj").style.display = "block";
+            document.getElementById("btn").style.display = "none";
 
-<img id="gul" src="https://upload.wikimedia.org/wikipedia/commons/3/35/Rose_pink_1.jpg">
+            setInterval(createHeart, 300);
+        }
 
-<p id="mesaj">Baban evde diye çiçeksiz kalacak değilsin ya ❤️</p>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (Math.random() * 20 + 20) + "px";
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
 
-<script>
-function cicek(){
-document.getElementById("gul").style.display="block";
-document.getElementById("mesaj").style.display="block";
-
-setInterval(function(){
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*20+20)+"px";
-document.body.appendChild(heart);
-
-setTimeout(()=>{heart.remove();},4000);
-},300);
-}
-</script>
-
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
