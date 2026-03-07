@@ -13,7 +13,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             text-align: center;
             overflow: hidden;
         }
@@ -34,15 +34,16 @@
             max-width: 350px;
             border-radius: 20px;
             margin-top: 20px;
-            display: none;
+            display: none; /* Başlangıçta gizli */
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
         .mesajlar { color: white; display: none; z-index: 10; }
-        p { font-size: 18px; font-weight: 600; margin: 10px 20px; }
+        p { font-size: 18px; font-weight: 600; margin: 10px 20px; text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
         .heart {
             position: fixed;
             top: 100vh;
             pointer-events: none;
+            z-index: 50;
             animation: floatUp 4s linear forwards;
         }
         @keyframes floatUp {
@@ -57,7 +58,7 @@
     
     <button id="btn" onclick="ac()">Çiçeği Aç ❤️</button>
     
-    <img id="lilyum" src="https://images.unsplash.com/photo-1596193712033-03e29864f16a?auto=format&fit=crop&w=600" alt="Lilyum Buketi">
+    <img id="lilyum" src="Https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJSlyElGF6EiaMtkkZWufcgLP5AiEMOlDeFV_5xN2152TpCOWtZ5Qdbydz&s=10" alt="Lilyum Buketi">
     
     <div id="altMesaj" class="mesajlar">
         <p>Baban evde diye çiçeksiz kalacak değilsin ya ❤️</p>
@@ -65,9 +66,12 @@
 
     <script>
         function ac() {
+            // Butonu gizle, çiçek ve mesajı göster
             document.getElementById("btn").style.display = "none";
             document.getElementById("lilyum").style.display = "block";
             document.getElementById("altMesaj").style.display = "block";
+
+            // Kalp yağmuru efektini başlat
             setInterval(createHeart, 300);
         }
 
@@ -77,7 +81,10 @@
             h.innerHTML = "❤️";
             h.style.left = Math.random() * 100 + "vw";
             h.style.fontSize = (Math.random() * 20 + 15) + "px";
+            h.style.opacity = Math.random() * 0.5 + 0.5;
             document.body.appendChild(h);
+
+            // Kalpleri 4 saniye sonra sayfadan silerek belleği temizle
             setTimeout(() => { h.remove(); }, 4000);
         }
     </script>
